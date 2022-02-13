@@ -12,11 +12,13 @@ class BlogCard extends StatelessWidget {
   final NetworkHandler networkHandler;
   final bool isOwnBlog;
   var addBlogModel;
+  final Function deleteBlog;
 
   BlogCard(
-      {this.addBlogModel,
+      {required this.addBlogModel,
       required this.networkHandler,
-      required this.isOwnBlog});
+      required this.isOwnBlog,
+      required this.deleteBlog});
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +70,10 @@ class BlogCard extends StatelessWidget {
                       var response = await networkHandler
                           .delete("blogpost/delete/${addBlogModel.id}");
                       if (response.statusCode == 200) {
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(builder: (context) => HomePage()),
-                            (route) => false);
+                        deleteBlog(addBlogModel.id);
+                        // Navigator.of(context).pushAndRemoveUntil(
+                        //     MaterialPageRoute(builder: (context) => HomePage()),
+                        //     (route) => false);
                       }
                     },
                     child: CircleAvatar(

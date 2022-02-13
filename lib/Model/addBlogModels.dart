@@ -27,7 +27,6 @@ class AddBlogModel {
     coverImage = json['coverImage'];
     like = json['like'];
     share = json['share'];
-
     comment = json['comment'];
   }
 

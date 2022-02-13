@@ -27,14 +27,20 @@ class _BlogsState extends State<Blogs> {
     fetchData();
   }
 
+  void deleteBlog(String id) {
+    setState(() {
+      data.removeWhere((element) => element.id == id);
+    });
+  }
+
   void fetchData() async {
     var response = await networkHandler.get(widget.url);
     if (response["status"]) {
       superModel = SuperModel.fromJson(response);
-      if (data.length != 0)
-        setState(() {
-          data = superModel.data;
-        });
+
+      setState(() {
+        data = superModel.data;
+      });
     }
   }
 
@@ -62,6 +68,7 @@ class _BlogsState extends State<Blogs> {
                     addBlogModel: data[i],
                     networkHandler: networkHandler,
                     isOwnBlog: widget.isOwnBlog,
+                    deleteBlog: deleteBlog,
                   ),
                 );
               },

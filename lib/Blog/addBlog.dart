@@ -81,9 +81,9 @@ class _AddBlogState extends State<AddBlog> {
         controller: _title,
         validator: (value) {
           if (value!.isEmpty) {
-            return "Title can't be empty";
+            return "Vechile can't be empty";
           } else if (value.length > 100) {
-            return "Title length should be <=100";
+            return "Vechile length should be <=100";
           }
           return null;
         },
@@ -99,7 +99,7 @@ class _AddBlogState extends State<AddBlog> {
               width: 2,
             ),
           ),
-          labelText: "Add Image and Title",
+          labelText: "Add VechileNo with No space",
           prefixIcon: IconButton(
             icon: Icon(
               iconphoto,
@@ -138,7 +138,7 @@ class _AddBlogState extends State<AddBlog> {
               width: 2,
             ),
           ),
-          labelText: "Provide Body Your Blog",
+          labelText: "Provide  Your report",
         ),
       ),
     );
@@ -148,17 +148,20 @@ class _AddBlogState extends State<AddBlog> {
     return InkWell(
       onTap: () async {
         if (_imageFile != null && _globalkey.currentState!.validate()) {
-          Map<String, String> data = {"body": _body.text, "title": _title.text};
+          Map<String, String> data = {
+            "report": _body.text,
+            "vechileNo": _title.text
+          };
           //AddBlogModel addBlogModel =
           //  AddBlogModel(body: _body.text, title: _title.text);
-          var response = await networkHandler.post("blogpost/Add", data);
+          var response = await networkHandler.post("complaint/Add", data);
           //blog body is added then it retrun an id which can be used to identify
-          //the blog and this id is used to store image like id.jpg  
+          //the blog and this id is used to store image like id.jpg
           print(response.body);
           if (response.statusCode == 200 || response.statusCode == 201) {
             String id = json.decode(response.body)["data"];
             var imageResponse = await networkHandler.patchImage(
-                "blogpost/add/coverImage/$id", _imageFile!.path);
+                "complaint/add/coverImage/$id", _imageFile!.path);
             print(imageResponse.statusCode);
             if (imageResponse.statusCode == 200 ||
                 imageResponse.statusCode == 201) {
@@ -178,7 +181,7 @@ class _AddBlogState extends State<AddBlog> {
               borderRadius: BorderRadius.circular(10), color: Colors.teal),
           child: Center(
               child: Text(
-            "Add Blog",
+            "File Complaint",
             style: TextStyle(
                 color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
           )),

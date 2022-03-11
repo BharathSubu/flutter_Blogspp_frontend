@@ -7,8 +7,6 @@ import "package:flutter/material.dart";
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SignUpPage extends StatefulWidget {
-  final String email;
-  SignUpPage({required this.email});
   @override
   _SignUpPageState createState() => _SignUpPageState();
 }
@@ -19,8 +17,7 @@ class _SignUpPageState extends State<SignUpPage> {
   NetworkHandler networkHandler = NetworkHandler();
   //networkHandler to work with crude operation
   TextEditingController _usernameController = TextEditingController();
-  late TextEditingController _emailController =
-      TextEditingController(text: widget.email);
+  TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   String errorText = ""; //to check for unique user name
   bool validate = false; //as boolen type
@@ -225,7 +222,6 @@ class _SignUpPageState extends State<SignUpPage> {
           Text("Email"),
           TextFormField(
             controller: _emailController,
-            enabled: false,
             validator: (value) {
               if (value!.isEmpty) return "Email can't be empty";
               if (!value.contains("@")) return "Email is Invalid";

@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:blogapp/pages/SignupPages/EmailVerify.dart';
 import 'package:blogapp/pages/SignupPages/SignInpage.dart';
+import 'package:blogapp/pages/SignupPages/SignUpPage.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
@@ -84,7 +84,7 @@ class _WelcomePageState extends State<WelcomePage>
               SlideTransition(
                 position: animation1,
                 child: Text(
-                  "CodeX28",
+                  "\nFavicon",
                   style: TextStyle(
                     fontSize: 38,
                     fontWeight: FontWeight.w600,
@@ -92,8 +92,17 @@ class _WelcomePageState extends State<WelcomePage>
                   ),
                 ),
               ),
+              Container(
+                height: 160,
+                width: 160,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: ExactAssetImage('assets/applogo.png'),
+                  ),
+                ),
+              ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 6,
+                height: MediaQuery.of(context).size.height / 9,
               ),
               SlideTransition(
                 position: animation1,
@@ -107,15 +116,6 @@ class _WelcomePageState extends State<WelcomePage>
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
-              boxContainer("assets/google.png", "Sign up with Google", null),
-              SizedBox(
-                height: 20,
-              ),
-              boxContainer(
-                  "assets/facebook1.png", "Sign up with FB", onFBLogin),
               SizedBox(
                 height: 20,
               ),
@@ -168,46 +168,9 @@ class _WelcomePageState extends State<WelcomePage>
     );
   }
 
-  onFBLogin() async {
-    final LoginResult result =
-        await FacebookAuth.instance.login(permissions: ['email']);
-    // FacebookAuth.instance
-    //     .login(permissions: ["public_profile", "email"]).then((value) {
-    if (result.status == LoginStatus.success) {
-      FacebookAuth.instance.getUserData().then((userData) {
-        setState(() {
-          _isLogin = true;
-          data = userData;
-        });
-        print("DATA TO BE GET ${data}");
-      });
-    } else {
-      print(result.status);
-      print(result.message);
-    }
-
-    // final LoginResult result =
-    //     await FacebookAuth.instance.login(permissions: ['email']);
-    // if (result.status == LoginStatus.success) {
-    //   final AccessToken? token = await FacebookAuth.instance.accessToken;
-    //   String url =
-    //       "https://graph.facebook.com/v4.0/me?fields=name,picture,email&access_token=$token";
-    //   final response = await http.get(Uri.parse(url));
-    //   final data1 = json.decode(response.body);
-    //   print("DATA TO BE GET ${data1}");
-    //   setState(() {
-    //     _isLogin = true;
-    //     data = data1;
-    //   });
-    // } else {
-    //   print(result.status);
-    //   print(result.message);
-    // }
-  }
-
   onEmailClick() {
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => EmailVerify(),
+      builder: (context) => SignUpPage(),
     ));
   }
 

@@ -120,4 +120,5 @@ class NetworkHandler {
   String formater(String url) {
     return baseurl + url;
   }
+  
 }

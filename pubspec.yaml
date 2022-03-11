@@ -44,6 +44,7 @@ dependencies:
   email_auth: ^1.0.0
   fluttertoast: ^8.0.8
   json_annotation: ^4.4.0
+  flutter_svg: ^1.0.3
 
 dev_dependencies:
   flutter_test:

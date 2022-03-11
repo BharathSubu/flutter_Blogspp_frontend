@@ -31,21 +31,27 @@ class OverlayCard extends StatelessWidget {
             ),
           ),
           Positioned(
+            left: MediaQuery.of(context).size.width / 3,
             bottom: 2,
             child: Container(
-              padding: EdgeInsets.all(8),
-              height: 55,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(8)),
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                ),
-              ),
-            ),
+                padding: EdgeInsets.all(8),
+                height: 55,
+                width: MediaQuery.of(context).size.width / 3,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8)),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      ),
+                    ])),
           )
         ],
       ),

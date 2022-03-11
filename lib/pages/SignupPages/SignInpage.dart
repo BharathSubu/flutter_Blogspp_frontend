@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'package:blogapp/pages/SignupPages/ForgetPassword.dart';
-import 'package:blogapp/pages/SignupPages/PasswordRestEmailVerify.dart';
-import 'package:blogapp/pages/SignupPages/EmailVerify.dart';
 import 'package:blogapp/pages/HomePage.dart';
+import 'package:blogapp/pages/SignupPages/SignUpPage.dart';
 import "package:flutter/material.dart";
 
 import '../../networkapi/NetworkHandler.dart';
@@ -70,11 +68,11 @@ class _SignInPageState extends State<SignInPage> {
                   children: [
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    PasswordResetEmailVerify()));
+                        // Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         builder: (context) =>
+                        //             PasswordResetEmailVerify()));
                       },
                       child: Text(
                         "Forgot Password ?",
@@ -91,7 +89,7 @@ class _SignInPageState extends State<SignInPage> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => EmailVerify()));
+                                builder: (context) => SignUpPage()));
                       },
                       child: Text(
                         "New User?",

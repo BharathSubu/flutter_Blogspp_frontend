@@ -1,4 +1,3 @@
-import 'package:blogapp/pages/SignupPages/EmailVerify.dart';
 import 'package:blogapp/pages/HomePage.dart';
 import 'package:blogapp/pages/SignupPages/WelcomePage.dart';
 import 'package:flutter/material.dart';

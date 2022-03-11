@@ -77,13 +77,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             ListTile(
-              title: Text("All Post"),
+              title: Text("Complaints"),
               trailing: Icon(Icons.launch),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text("New Story"),
-              trailing: Icon(Icons.add),
               onTap: () {},
             ),
             ListTile(
@@ -109,7 +104,9 @@ class _HomePageState extends State<HomePage> {
         title: Text(titleString[currentState]),
         centerTitle: true,
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.notifications), onPressed: () {}),
+          IconButton(icon: Icon(Icons.add), onPressed: () {
+            
+          }),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
